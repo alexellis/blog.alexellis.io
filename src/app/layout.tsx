@@ -51,7 +51,7 @@ export default function RootLayout({
         {/* Syntax Highlighting */}
         <link 
           rel="stylesheet" 
-          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.css"
         />
         
         {/* Favicon and Icons */}

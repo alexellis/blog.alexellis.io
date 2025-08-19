@@ -139,12 +139,16 @@ As I indulge myself with this blog post, I used an LLM to scaffold a finger serv
 
 ![finger-github](/content/images/2025/08/finger-github.jpg)
 
-I'll probably have to take down the finger server because we can't have nice things on the Internet these days. But whilst it's up, you can install a finger client, or use the built-in one, and run `finger GITHUB_USER@f.o6s.io`.
+I'll probably have to take down the finger server because we can't have nice things on the Internet these days. But whilst it's up, you can install a finger client, or use the built-in one, and run `finger alexellis@f.o6s.io` replacing `alexellis` with a GitHub user of your choice.
 
 To try it out run the following:
 
 ```bash
+# Get my profile
 finger alexellis@f.o6s.io
+
+# Look up Linus Torvalds
+finger torvalds@f.o6s.io
 ```
 
 The data is publicly available on GitHub and read from [https://github.com/alexellis](https://github.com/alexellis) and [https://github.com/alexellis.keys](https://github.com/alexellis.keys).
