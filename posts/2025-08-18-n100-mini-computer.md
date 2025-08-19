@@ -20,7 +20,7 @@ The [Intel N100](https://www.intel.com/content/www/us/en/products/sku/231803/int
 
 > Two N100s running two different K3s clusters, each loaded up with different versions of OpenFaaS.
 
-*Why not buy another Raspberry Pi?*
+**Why not buy another Raspberry Pi?**
 
 With recent developments, a Raspberry Pi 5 can now be bought with 16GB of RAM, and an official HAT with fittings for various types of NVMe SSDs. Compared to the previous generation, I found [a 3x speed increase](/first-impressions-with-the-raspberry-pi-5/) in my testing from Geekbench through to compiling a Linux Kernel in Firecracker and GitHub Actions via [actuated](https://actuated.com).
 
@@ -49,7 +49,7 @@ Other than my main workstation and laptop for travel, every other computer I own
 
 I know that many of us buy PCs to use as a hobby, for tinkering and non-commercial purposes. That's to be encouraged, and I hope you learn as much as I do when I tinker and experiment.
 
-*Testing real products on real hardware*
+**Testing real products on real hardware**
 
 My primary reason for PCs at home is because I work from home, and need a lab for product development, testing and support.
 
