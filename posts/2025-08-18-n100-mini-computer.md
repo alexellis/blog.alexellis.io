@@ -126,7 +126,7 @@ Sensor 1:     +71.8°C  (low  = -273.1°C, high = +65261.8°C)
 Sensor 2:     +55.9°C  (low  = -273.1°C, high = +65261.8°C)
 ```
 
-When I start up the 3x VMs running a mostly idle K3s cluster with OpenFaaS installed, the temperatures increase a little:
+An hour after starting up the 3x VMs running a mostly idle K3s cluster with OpenFaaS installed, the temperatures increase only a little. The 15m load average at that point is surprisingly low at 0.77. 
 
 ```bash
 coretemp-isa-0000
