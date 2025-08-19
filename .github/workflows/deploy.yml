@@ -57,7 +57,9 @@ jobs:
           GITHUB_PAGES_CUSTOM_DOMAIN: "blog.alexellis.io"
         
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        # Holding this back until the following issue is closed/resolved:
+        # https://github.com/actions/upload-pages-artifact/issues/128
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
