@@ -121,6 +121,8 @@ There are many other utilities like `finger` which are now considered obsolete, 
 
 Linux systems such as Ubuntu LTS have already dropped `finger`, but it's only an `apt install` away. MacOS ships finger which is already obsolete and insecure for various reasons, but funnily enough `telnet` is not available.
 
+As a side note `w` and `last` are handy tools on Linux servers to check to see who else is logged in, or who has logged in recently.
+
 **Why did I write this blog post?**
 
 I'm not trying to show how old I am, or to brag that I used Linux as a youth. No, I feel privileged for having had Linux and GNU utilities in my life in those early, formative years. I wanted to connect you back to the past - those of you who are younger than me, or even older but have used Windows exclusively.
@@ -138,6 +140,14 @@ As I indulge myself with this blog post, I used an LLM to scaffold a finger serv
 ![finger-github](/content/images/2025/08/finger-github.jpg)
 
 I'll probably have to take down the finger server because we can't have nice things on the Internet these days. But whilst it's up, you can install a finger client, or use the built-in one, and run `finger GITHUB_USER@f.o6s.io`.
+
+To try it out run the following:
+
+```bash
+finger alexellis@f.o6s.io
+```
+
+The data is publicly available on GitHub and read from [https://github.com/alexellis](https://github.com/alexellis) and [https://github.com/alexellis.keys](https://github.com/alexellis.keys).
 
 Last of all, I was surprised and a little disappointed at how suspicious folks are today of running a built-in, 54-year old UNIX utility, that's already on your computer. If you're worried about a command or don't know what it does - you can of course just Google it, ask an LLM, or simply go old-fashioned and use a man page, it's much quicker: `man finger`.
 
