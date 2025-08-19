@@ -49,11 +49,20 @@ Other than my main workstation and laptop for travel, every other computer I own
 
 I know that many of us buy PCs to use as a hobby, for tinkering and non-commercial purposes. That's to be encouraged, and I hope you learn as much as I do when I tinker and experiment.
 
+**Obligatory note on why I'm not using a cloud VM here**
+
+Someone on Hacker News or Reddit is shouting: "Just use the cloud? Nobody is capable of maintaining a Linux server."
+
+Sometimes cloud instances could provide a substitute, however they rarely support KVM, and we are penalised for needing large amounts of vCPU or RAM for workloads, in a way that we're not with mini PCs or self-built ATX towers. 
+At the time of speaking, an 8vCPU, 32GB RAM, 640GB NVMe Intel VM would cost me 192USD per month on DigitalOcean. In one and a half months, I'm on a break even and own the device for its lifespan.
+
+In terms of "maintenance", I install Ubuntu Server LTS and rarely touch it again - other than the occasional package update.
+
+Now, if something is public facing and making revenue (or risks revenue/reputation by going down), I will absolutely run that on a popular cloud VM, or on Hetzner's bare-metal offering split up into various microVMs. If possible, I'll run it on a CDN - like my blog, a homepage, or a documentation site.
+
 **Testing real products on real hardware**
 
 My primary reason for PCs at home is because I work from home, and need a lab for product development, testing and support.
-
-> Just use the cloud? Sometimes cloud instances could provide a substitute, however they rarely support KVM, and we are penalised for needing large amounts of vCPU or RAM for workloads, in a way that we're not with mini PCs or self-built ATX towers.
 
 [OpenFaaS](https://openfaas.com) is the primary product I work on and have built a business around. OpenFaaS is a self-hosted serverless framework that feels at home just as much on AWS EC2 as it does on a bare-metal server under my desk.
 
