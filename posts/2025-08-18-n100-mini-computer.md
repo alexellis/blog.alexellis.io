@@ -33,6 +33,8 @@ Total with 1TB storage: 250.93 GBP.
 
 Compared to the latest Ryzen processor, the N100 is no Usain Bolt - but it does come with native support for an NVMe boot drive, support for double the RAM, 4x 2.5Gbps Ethernet ports, and full-sized HDMI, and its power brick is included. You can buy it as a bare-bones kit, or pre-populated with OEM RAM and disk.
 
+The precise [N100 I bought was ~ 129.99 GBP](https://amzn.to/4fODE06), to which I added [32GB of Crucial DDR5 RAM ~ 65 GBP](https://amzn.to/4oJnyc6). You may not find the same model at your local Amazon site, but do look for at least i226-V on the networking side as I hear it's more stable than the alternatives.
+
 *You can `slice` up bare-metal instead of buying multiple devices*
 
 Where a Raspberry Pi 5 can *just about* handle a single node K3s cluster, an N100 can easily run three microVMs giving me three hosts for about the cost of one fully kitted out RPi 5. Multiple nodes simulate race conditions and networking issues better than one, and the effective 100 Pod per node limit gets multiplied per VM.
@@ -139,3 +141,4 @@ Here's how the Geekbench scores look (single-core/multi-core):
 * AMD Ryzen 9 7950X3D - 2561 / 15962
 
 You can [find all my Geekbench 6 test results here](https://browser.geekbench.com/user/356106).
+
