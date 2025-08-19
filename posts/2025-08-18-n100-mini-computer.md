@@ -33,6 +33,8 @@ Total with 1TB storage: 250.93 GBP.
 
 Compared to the latest Ryzen processor, the N100 is no Usain Bolt - but it does come with native support for an NVMe boot drive, support for double the RAM, 4x 2.5Gbps Ethernet ports, and full-sized HDMI, and its power brick is included. You can buy it as a bare-bones kit, or pre-populated with OEM RAM and disk.
 
+[![It costs a little more, but going bare-bones means you can get premium, and reliable kit from your usual vendor](/content/images/2025/08/n100-bare-bones.jpg)](/content/images/2025/08/n100-bare-bones.jpg)
+
 The precise [N100 I bought was ~ 129.99 GBP](https://amzn.to/4fODE06), to which I added [32GB of Crucial DDR5 RAM ~ 65 GBP](https://amzn.to/4oJnyc6). You may not find the same model at your local Amazon site, but do look for at least i226-V on the networking side as I hear it's more stable than the alternatives.
 
 *You can `slice` up bare-metal instead of buying multiple devices*
@@ -99,9 +101,37 @@ Actuated and Slicer are the latest in the line of products - both of which use F
 
 **Heat generation**
 
-Most of my usage has been with headless Linux - I have no idea how these perform with a screen attached, or with Windwos installed. One thing needs to be mentioned - the lack of a fan is a blessing and a curse. I've come close to burning my hands by touching them when they're only been running a mostly idle 3x node Kubernetes cluster set up with Slicer/Firecracker.
+Most of my usage has been with headless Linux - I have no idea how these perform with a screen attached, or with Windows installed. One thing needs to be mentioned - the lack of a fan is a blessing and a curse. I've come close to burning my hands by touching them when they're only been running a mostly idle 3x node Kubernetes cluster set up with Slicer/Firecracker.
 
 The output of the `sensors` command got all the way up to 93C when I had it on a windowsill with direct sun coming in through the glass. Putting the curtain around it made it drop by roughly 10C within less than a minute.
+
+On a cloudy 21C August afternoon, the temperatures look fine, but note the system load is basically idle.
+
+```bash
+alex@n100:~$ sensors
+coretemp-isa-0000
+Adapter: ISA adapter
+Package id 0:  +45.0°C  (high = +105.0°C, crit = +105.0°C)
+Core 0:        +43.0°C  (high = +105.0°C, crit = +105.0°C)
+Core 1:        +43.0°C  (high = +105.0°C, crit = +105.0°C)
+Core 2:        +43.0°C  (high = +105.0°C, crit = +105.0°C)
+Core 3:        +43.0°C  (high = +105.0°C, crit = +105.0°C)
+
+acpitz-acpi-0
+Adapter: ACPI interface
+temp1:        +27.8°C  (crit = +110.0°C)
+
+nvme-pci-0500
+Adapter: PCI adapter
+Composite:    +55.9°C  (low  = -40.1°C, high = +83.8°C)
+                       (crit = +87.8°C)
+Sensor 1:     +71.8°C  (low  = -273.1°C, high = +65261.8°C)
+Sensor 2:     +55.9°C  (low  = -273.1°C, high = +65261.8°C)
+
+alex@n100:~$ uptime
+ 15:02:09 up  4:18,  1 user,  load average: 0.06, 0.02, 0.00
+alex@n100:~$ 
+```
 
 The marketed use-case for these machines is as a fanless router (hence the 4x on-board ethernet ports). That means taking an off-the shelf product like pfSense, OPNsense, or even doing it like I would do and installing various Linux daemons as and when required. Then, if you were to put this device in the critical path between you and the Internet - I imagine it would generate a serious amount of heat.
 
