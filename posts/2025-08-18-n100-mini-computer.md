@@ -33,7 +33,8 @@ Total with 1TB storage: 250.93 GBP.
 
 Compared to the latest Ryzen processor, the N100 is no Usain Bolt - but it does come with native support for an NVMe boot drive, support for double the RAM, 4x 2.5Gbps Ethernet ports, and full-sized HDMI, and its power brick is included. You can buy it as a bare-bones kit, or pre-populated with OEM RAM and disk.
 
-[![It costs a little more, but going bare-bones means you can get premium, and reliable kit from your usual vendor](/content/images/2025/08/n100-bare-bones.jpg)](/content/images/2025/08/n100-bare-bones.jpg)
+[![Factory fresh - component installation](/content/images/2025/08/n100-bare-bones.jpg)](/content/images/2025/08/n100-bare-bones.jpg)
+> It costs a little more, but going bare-bones means you can get premium, and reliable kit from your usual vendor
 
 The precise [N100 I bought was ~ 129.99 GBP](https://amzn.to/4fODE06), to which I added [32GB of Crucial DDR5 RAM ~ 65 GBP](https://amzn.to/4oJnyc6). You may not find the same model at your local Amazon site, but do look for at least i226-V on the networking side as I hear it's more stable than the alternatives.
 
@@ -105,7 +106,7 @@ Most of my usage has been with headless Linux - I have no idea how these perform
 
 The output of the `sensors` command got all the way up to 93C when I had it on a windowsill with direct sun coming in through the glass. Putting the curtain around it made it drop by roughly 10C within less than a minute.
 
-On a cloudy 21C August afternoon, the temperatures look fine, but note the system load is basically idle.
+On a cloudy 21C August afternoon, the idle temperatures look absolutely fine.
 
 ```bash
 alex@n100:~$ sensors
@@ -127,11 +128,9 @@ Composite:    +55.9°C  (low  = -40.1°C, high = +83.8°C)
                        (crit = +87.8°C)
 Sensor 1:     +71.8°C  (low  = -273.1°C, high = +65261.8°C)
 Sensor 2:     +55.9°C  (low  = -273.1°C, high = +65261.8°C)
-
-alex@n100:~$ uptime
- 15:02:09 up  4:18,  1 user,  load average: 0.06, 0.02, 0.00
-alex@n100:~$ 
 ```
+
+For headless monitoring, you can use the open-source [node_exporter](https://github.com/prometheus/node_exporter) project which exports system information in Prometheus format. Just hook it up to a free Grafana cloud instance, or a local Grafana server running in Docker or a VM.
 
 The marketed use-case for these machines is as a fanless router (hence the 4x on-board ethernet ports). That means taking an off-the shelf product like pfSense, OPNsense, or even doing it like I would do and installing various Linux daemons as and when required. Then, if you were to put this device in the critical path between you and the Internet - I imagine it would generate a serious amount of heat.
 
@@ -156,6 +155,9 @@ I was interested in a much more performant Mini PC that could take at least two 
 In testing with Geekbench, I found it to be almost as fast as my AMD Ryzen 9 7950X3D in my workstation. Considering that one is the size of Big Mac and the other is full ATX - that an important space saver for use in a home office.
 
 ## Wrapping up
+
+[![Installing Ubuntu LTS with a portable 4k monitor](/content/images/2025/08/n100-installation.jpg)](/content/images/2025/08/n100-installation.jpg)
+> Installation is quick and easy, even if you purchase a bare-bones option. I used my [indispensable portable monitor](/you-might-need-a-portable-monitor).
 
 I bought one N100, and then found it to be so useful, that I wanted to keep it dedicated to certain tasks and tests. So I got a second for more ephemeral workloads. They do get hot, but seem very stable even at high temperatures. They're exceptional value for money, and much more powerful than a Raspberry Pi - and in the same ballpark re: costs.
 
