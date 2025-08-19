@@ -104,7 +104,7 @@ Actuated and Slicer are the latest in the line of products - both of which use F
 
 Most of my usage has been with headless Linux - I have no idea how these perform with a screen attached, or with Windows installed. One thing needs to be mentioned - the lack of a fan is a blessing and a curse. I've come close to burning my hands by touching them when they're only been running a mostly idle 3x node Kubernetes cluster set up with Slicer/Firecracker.
 
-The output of the `sensors` command got all the way up to 93C when I had it on a windowsill with direct sun coming in through the glass. Putting the curtain around it made it drop by roughly 10C within less than a minute.
+The temperature of the NVMe as observed from the `sensors` command got all the way up to 85-90C when I had it on a windowsill with direct sun coming in. Putting the curtain behind it resulted in a 15C drop within a few minutes. This was with an aftermarket heatsink fitted to the drive.
 
 On a cloudy 21C August afternoon, the idle temperatures look absolutely fine.
 
@@ -118,16 +118,31 @@ Core 1:        +43.0°C  (high = +105.0°C, crit = +105.0°C)
 Core 2:        +43.0°C  (high = +105.0°C, crit = +105.0°C)
 Core 3:        +43.0°C  (high = +105.0°C, crit = +105.0°C)
 
-acpitz-acpi-0
-Adapter: ACPI interface
-temp1:        +27.8°C  (crit = +110.0°C)
-
 nvme-pci-0500
 Adapter: PCI adapter
 Composite:    +55.9°C  (low  = -40.1°C, high = +83.8°C)
                        (crit = +87.8°C)
 Sensor 1:     +71.8°C  (low  = -273.1°C, high = +65261.8°C)
 Sensor 2:     +55.9°C  (low  = -273.1°C, high = +65261.8°C)
+```
+
+When I start up the 3x VMs running a mostly idle K3s cluster with OpenFaaS installed, the temperatures increase a little:
+
+```bash
+coretemp-isa-0000
+Adapter: ISA adapter
+Package id 0:  +55.0°C  (high = +105.0°C, crit = +105.0°C)
+Core 0:        +54.0°C  (high = +105.0°C, crit = +105.0°C)
+Core 1:        +54.0°C  (high = +105.0°C, crit = +105.0°C)
+Core 2:        +54.0°C  (high = +105.0°C, crit = +105.0°C)
+Core 3:        +54.0°C  (high = +105.0°C, crit = +105.0°C)
+
+nvme-pci-0500
+Adapter: PCI adapter
+Composite:    +60.9°C  (low  = -40.1°C, high = +83.8°C)
+                       (crit = +87.8°C)
+Sensor 1:     +77.8°C  (low  = -273.1°C, high = +65261.8°C)
+Sensor 2:     +60.9°C  (low  = -273.1°C, high = +65261.8°C)
 ```
 
 For headless monitoring, you can use the open-source [node_exporter](https://github.com/prometheus/node_exporter) project which exports system information in Prometheus format. Just hook it up to a free Grafana cloud instance, or a local Grafana server running in Docker or a VM.
