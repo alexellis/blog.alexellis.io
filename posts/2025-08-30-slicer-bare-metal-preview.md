@@ -124,6 +124,14 @@ Once you have the slicer binary, activate it with your new or existing [GitHub S
 slicer activate
 ```
 
+## Any colour you want, so long as it's black
+
+This phrase has been attributed to Henry Ford, and it applies to Slicer too.
+
+We use Ubuntu LTS for all of our work, so the root filesystem is Ubuntu based.
+
+We also have a Rocky Linux image for those who prefer a RHEL-like experience, or need to work with RHEL/Fedora deployments in production.
+
 ## A quick template for a VM
 
 There are many configuration options and settings, so I'm going to give you the most basic to get started with.
@@ -132,7 +140,6 @@ Create `vm-image.yaml`:
 
 ```yaml
 config:
-
   host_groups:
   - name: vm
     storage: image
@@ -146,7 +153,7 @@ config:
       gateway: 192.168.137.1/24
 
   github_user: alexellis
-
+youyou
   kernel_image: "ghcr.io/openfaasltd/actuated-kernel:5.10.240-x86_64-latest"
   image: "ghcr.io/openfaasltd/slicer-systemd:5.10.240-x86_64-latest"
 
@@ -217,15 +224,69 @@ WantedBy=multi-user.target
 
 Then enable the service and start it.
 
+## How do I customise the image or setup userdata?
+
+The preferred way to customise an image is to supply a userdata script. Note this is not cloud-init, but a bash script. Formal cloud-init makes starting microVMs very slow which is a non-goal for us here.
+
+```diff
+config:
+  host_groups:
+  - name: vm
++    userdata: |
++      #!/bin/bash
++      echo "Enabling nginx"
++      apt-get update
++      apt-get install -y nginx
++      systemctl enable nginx --now
+```
+
+Or perhaps install Docker, and make the default user able to access the daemon:
+
+```diff
+config:
+  host_groups:
+  - name: vm
++    userdata: |
++      #!/bin/bash
++      echo "Enabling Docker"
++      curl -sLS https://get.docker.com | sh
++      usermod -aG docker ubuntu
+```
+
+For a more permanent setup, you could simply take the root filesystem, and extend it via Docker, publish a new image and then update your YAML file.
+
+i.e.
+
+```
+FROM ghcr.io/openfaasltd/slicer-systemd:5.10.240-x86_64-latest
+
+RUN apt-get update && apt-get install -qy nginx && \
+  systemctl enable nginx --now
+```
+
+You could publish this new image via a CI pipeline using GitLab CI, GitHub Actions, or just a regular bash script or cron job.
+
+Then update your `vm-image.yaml` to use your new image:
+
+```diff
+config:
+  host_groups:
+  - name: vm
+-    image: "ghcr.io/openfaasltd/slicer-systemd:5.10.240-x86_64-latest"
++    image: "docker.io/alexellis2/slicer-nginx:5.10.240-x86_64-latest"
+```
+
+You can also create hosts via API, passing along your custom userdata script, which is the technique I used in the Cluster Autoscaler demo above.
+
 ## How does Slicer compare to other tools I already know?
 
 lxd/multipass - this was the first tool I tried to use when testing large scale deployments of Kubernetes. We had already built-up experience with multipass and recommend it for testing OpenFaaS Edge / faasd CE. But it took about 3 minutes to launch each VM, and even longer to delete them. It was so painfully slow, and we'd already built up so much operational knowledge of microVMs through actuated, that we decided to build our own tool.
 
 incbus - a fork of lxd with lofty ambitions - a very long setup process, many moving parts, designed to be general purpose which I believe makes it the Kubernetes of VM tools - make of that what you want.
 
-QEMU/libvirt - the syntax for qemu is cryptic at best, and just not built to manage multiple VMs. libvirt is living in the 90s, it requires a lot of boilerplate XML and the networking is too low level for working quickly
+QEMU/libvirt - the syntax for qemu is cryptic at best, and just not built to manage multiple VMs. libvirt is living in the 90s, it requires a lot of boilerplate XML and the networking is too low level for working quickly.
 
-Proxmox VE - the much beloved tool of the home-lab community. If you cut your teeth on "click and point ops" and enjoy something that makes you feel like a VMware admin, then it's probably a better tool for you
+Proxmox VE - the much beloved tool of the home-lab community, despite being something of a kitchen sink, and rather heavyweight. So if you cut your teeth on "click and point ops" and enjoy something that makes you feel like a VMware admin, then it's probably a good option to consider instead of slicer.
 
 Slicer is a modern alternative focused on super fast creation and deletion of microVMs. It comes with SSH preconfigured, and systemd installed, along with just enough Kernel drivers to run containers, Kubernetes, and eBPF. It's fast and lean, and only does just enough for R&D and running production applications.
 
