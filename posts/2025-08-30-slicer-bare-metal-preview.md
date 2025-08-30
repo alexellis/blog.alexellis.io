@@ -300,6 +300,12 @@ Slicer comes with a Serial Over SSH console for easy out of band access. Its API
 
 The Slicer Preview is strictly licensed as a "Home Edition" for use by individuals, it is not licensed for production usage - this will require a [commercial agreement](mailto:contact@openfaas.com). But having said that, feel free to try it out and get back to me via Twitter [@alexellisuk](https://x.com/alexellisuk).
 
+Get started:
+
+1. Become a [GitHub sponsor](https://github.com/sponsors/alexellis) at 25 USD / mo or higher, if you are not already.
+2. Find a machine and install Linux onto it, or go to Hetzner Robot (bare metal cloud) and set up a beefy bare-metal host for 30-40 EUR / month. The Intel EX22 is fantastic value.
+3. Email me at alex@openfaas.com and I'll send you a Discord invite so we can talk about your use-case, help you get started, and get your feedback.
+
 In the next post we'll look at:
 
 * How to run the same, but on Arm, i.e. a Raspberry Pi 5 or Asahi Linux on a Mac Mini M1 or M2
