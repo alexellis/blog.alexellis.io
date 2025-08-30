@@ -1,0 +1,260 @@
+---
+title: "Preview: Slice Up Bare-Metal with Slicer"
+slug: "slicer-bare-metal-preview"
+date: "2025-08-30T08:09:48Z"
+meta_title: "Preview: Slicer Up Bare-Metal with Slicer"
+meta_description: "It's finally here, the initial preview of Slicer - our internal tool for slicing up bare metal into microVMs."
+author: "Alex Ellis"
+draft: true
+tags:
+  - "linux"
+  - "self-hosting"
+  - "work"
+  - "firecracker"
+  - "slicer"
+---
+
+By popular request, we're releasing Slicer, our much used internal tool from OpenFaaS Ltd for efficiently slicing up bare metal into microVMs.
+
+I was on a call this week with Lingzhi Wang, of [Northwestern University](https://www.northwestern.edu/) in the USA. He told me he was doing a research project on intrusion detection with OpenFaaS, and had access to a powerful machine.
+
+When I asked how powerful the machine was, his reply shocked me:
+
+* 128 Cores
+* 1.5 TB of RAM
+
+My next question surprised him.
+
+How many Kubernetes Pods, do you think you can run on that huge machine?
+
+I answered: only 100.
+
+He was installing K3s (Kubernetes) directly onto the host, which when coupled with a 100 Pod limit is a huge waste of resources.
+
+Enter slicer, and the original reason we created it.
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">If you&#39;ve not seen a demo of my slicer tool yet..<br><br>It takes a bare-metal host and partitions it into dozens of Firecracker VMs in ~ 1-2s. From there you can do whatever you want via SSH<br><br>In my screenshot &quot;k3sup plan&quot; created a 25-node HA cluster<a href="https://t.co/WpG2v3RPK7">https://t.co/WpG2v3RPK7</a> <a href="https://t.co/Wbz5Szk1BI">pic.twitter.com/Wbz5Szk1BI</a></p>&mdash; Alex Ellis (@alexellisuk) <a href="https://twitter.com/alexellisuk/status/1716759592795885976?ref_src=twsrc%5Etfw">October 24, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+The original use-case was for customer support for our line of Kubernetes products such as OpenFaaS and Inlets Uplink.
+
+* Build a large cluster capable of running thousands of Pods on a single machine - blasting that 100 Pod per node limit
+* Learn how far we can push OpenFaaS before we start to see untolerable latency on `faas-cli list` and `faas-cli deploy`, etc
+* Optimise the cost of long-running burn-in tests and customer simulations
+* Simulate spot-instance behaviour - node addition/removal through Firecracker
+* Chaos testing - what happens when the network disconnects? This was used to fix a mysterious production issue for a customer where informers were disconnecting after network interruptions
+* Test our code on Arm and x86_64 hosts
+
+Key features that make it ideal for running production workloads:
+
+* Fast storage pool for instant clone of new VMs
+* Run with a disk file for persistent workloads
+* Boot time ~ 1s including systemd
+* Proven at scale in actuated running millions of jobs for top-tier CNCF projects
+* Serial Over SSH console to enable access when the network is down
+* Disk management utilities for migration
+* Multi-host support for even larger slicer deployments
+* Near-instant destruction of hosts
+* GPU mounting via VFIO for Ollama
+
+## Enough talking, I just want to see it running
+
+You can watch a brief demo here:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XCBJ0XNqpWE?si=2Py3LmT-ATbDTcI-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Stacking value - autoscaling K3s - on your own hardware
+
+With the original versions of Slicer, we were already able to stand up a HA K3s cluster within about a minute, but with the new version, we can autoscale nodes through the upstream Kubernetes Cluster Autoscaler project.
+
+This is the pinnacle of cool for me, but it has a real purpose - OpenFaaS customers run on spot instances, and autoscaling groups. Typically you just can't reproduce that on your own kit.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MHXvhKb6PpA?si=hRxZu-BNVSVNC4Qx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## K3sup Pro if you need K3s
+
+Whilst the CE edition is ideal for experimentation, k3sup pro was built to satisfy long standing requests for an IaaC/GitOps experience.
+
+k3sup pro adds a plan and apply command to automate installations both small and large - running in parallel.
+
+The plan file can be customised and retained in Git for maintenance and updates.
+
+[Learn more about K3sup Pro](https://github.com/alexellis/k3sup?tab=readme-ov-file#k3sup-pro)
+
+## Quick and dirty installation of Slicer
+
+You'll need to become a GitHub Sponsor at 25 USD / mo or higher for myself, if you already are then guess what? It's effectively free for you.
+
+Within the sponsorship, you also get free access to K3sup Pro with its plan and apply features that take the output from Slicer and install a multi-master HA K3s cluster all in parallel.
+
+These instructions are quick - and dirty. More will follow, but the technical amongst us will have no issues overlooking this for now.
+
+You will need a system with Linux installed - I recommend Ubuntu 22.04 or 24.04.
+
+First use the actuated installer to install the pre-requisites:
+
+```bash
+mkdir -p ~/.actuated
+cat > ~/.actuated/LICENSE
+
+(
+# Install arkade
+curl -sLS https://get.arkade.dev | sudo sh
+
+# Use arkade to extract the agent from its OCI container image
+arkade oci install ghcr.io/openfaasltd/actuated-agent:latest --path ./agent
+chmod +x ./agent/agent*
+sudo mv ./agent/agent* /usr/local/bin/
+)
+
+(
+cd agent
+sudo -E ./install.sh
+)
+```
+
+Next, get the slicer binary itself:
+
+```bash
+sudo -E arkade octi install ghcr.io/openfaasltd/slicer:latest --path /usr/local/bin
+```
+
+Once you have the slicer binary, activate it with your new or existing [GitHub Sponsorship](https://github.com/sponsors/alexellis).
+
+```bash
+slicer activate
+```
+
+## A quick template for a VM
+
+There are many configuration options and settings, so I'm going to give you the most basic to get started with.
+
+Create `vm-image.yaml`:
+
+```yaml
+config:
+
+  host_groups:
+  - name: vm
+    storage: image
+    storage_size: 25G
+    count: 1
+    vcpu: 2
+    ram_gb: 4
+    network:
+      bridge: brvm0
+      tap_prefix: vmtap
+      gateway: 192.168.137.1/24
+
+  github_user: alexellis
+
+  kernel_image: "ghcr.io/openfaasltd/actuated-kernel:5.10.240-x86_64-latest"
+  image: "ghcr.io/openfaasltd/slicer-systemd:5.10.240-x86_64-latest"
+
+  api:
+    port: 8080
+    bind_address: "127.0.0.1:"
+    auth:
+      enabled: true
+
+  ssh:
+    port: 2222
+    bind_address: "0.0.0.0:"
+
+  hypervisor: firecracker
+```
+
+Run the following:
+
+```bash
+sudo -E ./slicer up ./vm-image.yaml
+```
+
+The Kernel and Root filesystem will be downloaded and unpacked into containerd. These will then be used to clone a new disk of the size set via `storage_size`.
+
+Feel free to customise the `count` which is the number of VMs to create in the group, and the `vcpu` or `ram_gb` fields.
+
+You can connect to the API via `http://127.0.0.1:8080` - make sure you use the `Authorization: Bearer` header along with the token generated on start-up.
+
+The Serial Over SSH console is also available at `ssh -p 2222 user@127.0.0.1` and is exposed on all interfaces, so you can connect to it remotely.
+
+The `github_user` field is used to pre-program an `authorized_keys` entry for your user, so make sure your SSH keys are up to date on user profile on GitHub.
+
+Then whenever you're ready you can connect directly to the VM over SSH using the `ubuntu` user:
+
+```bash
+ssh ubuntu@192.168.137.2
+```
+
+You can "reset" the VM by hitting Control + C then `rm -rf vm-1.img` followed by restarting slicer.
+
+Bear in mind that the SSH host key will have changed, so run:
+
+```bash
+ssh-keygen -R 192.168.137.2
+```
+
+To make slicer permanent create a systemd unit file i.e. `vm.service`:
+
+```ini
+[Unit]
+Description=Slicer
+
+[Service]
+User=root
+Type=simple
+WorkingDirectory=/home/alex
+ExecStart=sudo -E /usr/local/bin/slicer up \
+  /home/alex/vm-image.yaml \
+  --license-file /home/alex/.slicer/LICENSE
+Restart=always
+RestartSec=30s
+KillMode=mixed
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then enable the service and start it.
+
+## How does Slicer compare to other tools I already know?
+
+lxd/multipass - this was the first tool I tried to use when testing large scale deployments of Kubernetes. We had already built-up experience with multipass and recommend it for testing OpenFaaS Edge / faasd CE. But it took about 3 minutes to launch each VM, and even longer to delete them. It was so painfully slow, and we'd already built up so much operational knowledge of microVMs through actuated, that we decided to build our own tool.
+
+incbus - a fork of lxd with lofty ambitions - a very long setup process, many moving parts, designed to be general purpose which I believe makes it the Kubernetes of VM tools - make of that what you want.
+
+QEMU/libvirt - the syntax for qemu is cryptic at best, and just not built to manage multiple VMs. libvirt is living in the 90s, it requires a lot of boilerplate XML and the networking is too low level for working quickly
+
+Proxmox VE - the much beloved tool of the home-lab community. If you cut your teeth on "click and point ops" and enjoy something that makes you feel like a VMware admin, then it's probably a better tool for you
+
+Slicer is a modern alternative focused on super fast creation and deletion of microVMs. It comes with SSH preconfigured, and systemd installed, along with just enough Kernel drivers to run containers, Kubernetes, and eBPF. It's fast and lean, and only does just enough for R&D and running production applications.
+
+Slicer was written by a developer for making efficient use of large bare-metal hosts, but is equally at home on a Hetzner Robot / Auction instance, splitting up a 16 core / 128GB A102 host into 3-5 dedicated microVMs for various production applications - or a production-ready K3s cluster.
+
+Slicer is a daemon, and can be run with systemd so it's always there when your machine reboots.
+
+Slicer comes with a Serial Over SSH console for easy out of band access. Its API can be used to add and remove hosts dynamically and rapidly for autoscaling.
+
+## Wrapping up
+
+The Slicer Preview is strictly licensed as a "Home Edition" for use by individuals, it is not licensed for production usage - this will require a [commercial agreement](mailto:contact@openfaas.com). But having said that, feel free to try it out and get back to me via Twitter [@alexellisuk](https://x.com/alexellisuk).
+
+In the next post we'll look at:
+
+* How to run the same, but on Arm, i.e. a Raspberry Pi 5 or Asahi Linux on a Mac Mini M1 or M2
+* How to use ZFS snapshots and clones for instant boot of new VMs, instead of static disk files
+* How to use the `slicer vm list`, `slicer vm top`, `slicer vm exec` commands
+
+Following on from there, you'll see a documentation site with examples such as:
+
+* Launch a large HA K3s cluster
+* Chaos test a Kubernetes operator through its network whilst retaining serial access
+* Run multiple isolated, production applications on a bare-metal host on Hetzner
+* Autoscale a K3s cluster
+* Run a K3s cluster across multiple hosts
+* Mount a GPU with Ollama for LLMs
+* Run Slicer on your Raspberry PI
+* Run OpenFaaS Edge (Sponsors Edition) or faasd CE on a microVM
+
+Plus more examples, and more of you good people try it out and provide feedback.
+
