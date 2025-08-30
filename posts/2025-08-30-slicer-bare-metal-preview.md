@@ -286,7 +286,7 @@ The userdata script will run as root on first boot.
 config:
   host_groups:
   - name: vm
-+    userdata: |
++   userdata: |
 +      #!/bin/bash
 +      echo "Enabling nginx"
 +      apt-get update
@@ -300,7 +300,7 @@ Or perhaps install Docker, and make the default user able to access the daemon:
 config:
   host_groups:
   - name: vm
-+    userdata: |
++   userdata: |
 +      #!/bin/bash
 +      echo "Enabling Docker"
 +      curl -sLS https://get.docker.com | sh
