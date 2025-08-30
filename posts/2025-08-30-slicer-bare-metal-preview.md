@@ -62,6 +62,10 @@ You can watch a brief demo here:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XCBJ0XNqpWE?si=2Py3LmT-ATbDTcI-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+> I demo our slicer product which we use for customer support - from Linux software, to Kubernetes operators - for large scale experiments, for testing network failure, and for feature development. Both Firecracker and Cloud Hypervisor are supported (the later supports GPUs over VFIO).
+> 
+> The demo features the Serial Over SSH (SOS) console which is great for chaos testing and debugging tricky issues without relying on networking.
+
 ## Stacking value - autoscaling K3s - on your own hardware
 
 With the original versions of Slicer, we were already able to stand up a HA K3s cluster within about a minute, but with the new version, we can autoscale nodes through the upstream Kubernetes Cluster Autoscaler project.
