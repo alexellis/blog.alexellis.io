@@ -90,6 +90,28 @@ K3sup Pro is a huge time saver, and free for my GitHub Sponsors.
 
 [Learn more about K3sup Pro](https://github.com/alexellis/k3sup?tab=readme-ov-file#k3sup-pro)
 
+## Everything you get as a GitHub Sponsor
+
+> "I am so damn exited to try this, ever since you first mentioned it"
+>
+> "Oh, I expected it to be free"
+
+We run a business and pay salaries to staff. OpenFaaS taught me that we can't work for free, it's not sustainable, and are not a charity (despite me still maintaining various OSS tools). But instead, I'm giving you just about as much value as possible for the cost of a coffee per month.
+
+In a way, this is a good thing - there are so many free tools out there. Here, we self-select the people who really want to use the software and want to join a community of self-hosters, home-labbers, and cloud native developers.
+
+At some point in the future, we may move Slicer Home Edition to a "Once" model, pay once and use it forever.
+
+If you're already a sponsor, you get all of the below to play with as much as you like for free. So long as it's not used at or for your work/business/dayjob.
+
+* [Slicer Home Edition](https://blog.alexellis.io/slicer-bare-metal-preview/) - for developers and homelabs - slicer up bare metal into lightweight microVMs
+* [K3sup Pro](https://github.com/alexellis/k3sup) - plan and apply K3s installations, with a terraform style approach - run in parallel
+* [OpenFaaS Edge](https://docs.openfaas.com/edge/overview/) - includes many of the commercial features of OpenFaaS - but licensed only for your personal, use (not at/for work)
+* [Debug GitHub Actions](https://docs.actuated.com/tasks/debug-ssh/) jobs over SSH using the ssh gateway by [actuated](https://actuated.com)
+* Direct access to [my sponsors portal](https://insiders.alexellis.io/), with all my past sponsors emails and 20% off my eBooks
+* 50% off a 1:1 meeting with me via Zoom for advice & direction in the portal
+* Access to the private Discord server for help and discussion
+
 ## Quick and dirty installation of Slicer
 
 You'll need to sponsor me via [GitHub Sponsors](https://github.com/sponsors/alexellis) at 25 USD / mo or higher. If you're already at this level.. then guess what? It's effectively free for you.
