@@ -92,11 +92,11 @@ K3sup Pro is a huge time saver, and free for my GitHub Sponsors.
 
 ## Everything you get as a GitHub Sponsor
 
-> "I am so damn exited to try this, ever since you first mentioned it"
+> "I am so damn exited to try this, ever since you first mentioned it."
 >
-> "Oh, I expected it to be free"
+> "Oh, I expected it to be free."
 
-We run a business and pay salaries to staff. OpenFaaS taught me that we can't work for free, it's not sustainable, and are not a charity (despite me still maintaining various OSS tools). But instead, I'm giving you just about as much value as possible for the cost of a coffee per month.
+We run a business and pay salaries to staff. OpenFaaS taught me that we can't work for free, it's not sustainable, and are not a charity (despite me still maintaining various OSS tools). But instead, I'm giving you just about as much value as possible for the cost of a coffee per week.
 
 In a way, this is a good thing - there are so many free tools out there. Here, we self-select the people who really want to use the software and want to join a community of self-hosters, home-labbers, and cloud native developers.
 
