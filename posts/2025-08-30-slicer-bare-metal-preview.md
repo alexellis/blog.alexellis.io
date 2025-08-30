@@ -74,6 +74,8 @@ This is the pinnacle of cool for me, but it has a real purpose - OpenFaaS custom
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MHXvhKb6PpA?si=hRxZu-BNVSVNC4Qx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+I'll be putting up our fork of the Cluster Autoscaler project on GitHub soon. 
+
 ## K3sup Pro if you need K3s
 
 Whilst the K3sup CE edition with its `k3sup install/join` commands is ideal for experimentation, K3sup Pro was built to satisfy long standing requests for an IaaC/GitOps experience.
@@ -206,6 +208,8 @@ The Serial Over SSH console is also available at `ssh -p 2222 user@127.0.0.1` an
 
 The `github_user` field is used to pre-program an `authorized_keys` entry for your user, so make sure your SSH keys are up to date on user profile on GitHub.
 
+You will generally not SSH into a machine on the host itself, but from your laptop or workstation, or even remotely. Make sure that you read the output when Slicer starts up as it'll show you how to add the route for Linux and MacOS.
+
 Then whenever you're ready you can connect directly to the VM over SSH using the `ubuntu` user:
 
 ```bash
@@ -219,6 +223,10 @@ Bear in mind that the SSH host key will have changed, so run:
 ```bash
 ssh-keygen -R 192.168.137.2
 ```
+
+## Running Slicer as a daemon
+
+Sometimes when we're doing much longer term testing, we'll set up Slicer to run as a systemd service, so when machines are powered off for the weekend (to save power) Everything is ready and waiting exactly as we left it.
 
 To make slicer permanent create a systemd unit file i.e. `vm.service`:
 
@@ -243,6 +251,8 @@ WantedBy=multi-user.target
 ```
 
 Then enable the service and start it.
+
+You can have multiple slicer daemons running so long as their networking and host group names do not clash.
 
 ## How do I customise the image or setup userdata?
 
