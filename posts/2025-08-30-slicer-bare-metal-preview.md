@@ -332,7 +332,7 @@ Slicer comes with a Serial Over SSH console for easy out of band access. Its API
 
 ## Wrapping up
 
-The Slicer Preview is strictly licensed as a "Home Edition" for use by individuals, it is not licensed for production usage - this will require a [commercial agreement](mailto:contact@openfaas.com). But having said that, feel free to try it out and get back to me via Twitter [@alexellisuk](https://x.com/alexellisuk).
+The Slicer Preview is strictly licensed as a "Home Edition" for use by individuals, it is not licensed for use within or for a business - this will require a [commercial agreement](mailto:contact@openfaas.com). But having said that, feel free to try it out and get back to me via Twitter [@alexellisuk](https://x.com/alexellisuk).
 
 Get started:
 
