@@ -62,11 +62,9 @@ You can watch a brief demo here:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XCBJ0XNqpWE?si=2Py3LmT-ATbDTcI-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-> I demo our slicer product which we use for customer support - from Linux software, to Kubernetes operators - for large scale experiments, for testing network failure, and for feature development. Both Firecracker and Cloud Hypervisor are supported (the later supports GPUs over VFIO).
-> 
 > The demo features the Serial Over SSH (SOS) console which is great for chaos testing and debugging tricky issues without relying on networking.
 
-## Stacking value - autoscaling K3s - on your own hardware
+## Stacking value - autoscaling Kubernetes - on your own hardware
 
 With the original versions of Slicer, we were already able to stand up a HA K3s cluster within about a minute, but with the new version, we can autoscale nodes through the upstream Kubernetes Cluster Autoscaler project.
 
@@ -76,7 +74,7 @@ This is the pinnacle of cool for me, but it has a real purpose - OpenFaaS custom
 
 I'll be putting up our fork of the Cluster Autoscaler project on GitHub soon. 
 
-## K3sup Pro if you need K3s
+### K3sup Pro if you need K3s
 
 Whilst the K3sup CE edition with its `k3sup install/join` commands is ideal for experimentation, K3sup Pro was built to satisfy long standing requests for an IaaC/GitOps experience.
 
@@ -90,19 +88,19 @@ K3sup Pro is a huge time saver, and free for my GitHub Sponsors.
 
 [Learn more about K3sup Pro](https://github.com/alexellis/k3sup?tab=readme-ov-file#k3sup-pro)
 
-## Everything you get as a GitHub Sponsor
+## Everything you get for the price of a coffee
 
-> "I am so damn exited to try this, ever since you first mentioned it."
->
 > "Oh, I expected it to be free."
 
-We run a business and pay salaries to staff. OpenFaaS taught me that we can't work for free, it's not sustainable, and are not a charity (despite me still maintaining various OSS tools). But instead, I'm giving you just about as much value as possible for the cost of a coffee per week.
+OpenFaaS was one of the first projects I built, and it was open-source from the start. Many people remember me for that. But those were different times, and now we need to fund salaries to enable full-time R&D and support.
 
-In a way, this is a good thing - there are so many free tools out there. Here, we self-select the people who really want to use the software and want to join a community of self-hosters, home-labbers, and cloud native developers.
+In a way this reaction is a good thing - there are so many free tools available for to you. With Slicer Home Edition, we self-select the people who really want to use the software and want to join a community of self-hosters, home-labbers, and cloud native developers.
 
 At some point in the future, we may move Slicer Home Edition to a "Once" model, pay once and use it forever.
 
 If you're already a sponsor, you get all of the below to play with as much as you like for free. So long as it's not used at or for your work/business/dayjob.
+
+Included for 25 USD / mo is:
 
 * [Slicer Home Edition](https://blog.alexellis.io/slicer-bare-metal-preview/) - for developers and homelabs - slicer up bare metal into lightweight microVMs
 * [K3sup Pro](https://github.com/alexellis/k3sup) - plan and apply K3s installations, with a terraform style approach - run in parallel
@@ -114,9 +112,9 @@ If you're already a sponsor, you get all of the below to play with as much as yo
 
 ## Quick and dirty installation of Slicer
 
-You'll need to sponsor me via [GitHub Sponsors](https://github.com/sponsors/alexellis) at 25 USD / mo or higher. If you're already at this level.. then guess what? It's effectively free for you.
+You'll need a sponsorship as mentioned above. This is used to activate your Slicer installation.
 
-Within the sponsorship, you also get free access to K3sup Pro with its plan and apply features that take the output from Slicer and install a multi-master HA K3s cluster all in parallel.
+Within the sponsorship, you *also get* free access to K3sup Pro with its plan and apply features that take the output from Slicer and install a multi-master HA K3s cluster all in parallel.
 
 These instructions are quick - and dirty. More will follow, but the technical amongst us will have no issues overlooking this for now.
 
