@@ -49,7 +49,7 @@ Key features that make it ideal for running production workloads:
 * Fast storage pool for instant clone of new VMs
 * Run with a disk file for persistent workloads
 * Boot time ~ 1s including systemd
-* Proven at scale in actuated running millions of jobs for top-tier CNCF projects
+* Proven at scale in [actuated](https://actuated.com) running millions of jobs for top-tier CNCF projects
 * Serial Over SSH console to enable access when the network is down
 * Disk management utilities for migration
 * Multi-host support for even larger slicer deployments
@@ -90,7 +90,7 @@ These instructions are quick - and dirty. More will follow, but the technical am
 
 You will need a system with Linux installed - I recommend Ubuntu 22.04 or 24.04.
 
-First use the actuated installer to install the pre-requisites:
+First use the [actuated](https://actuated.com) installer to install the pre-requisites:
 
 ```bash
 mkdir -p ~/.actuated
@@ -280,7 +280,7 @@ You can also create hosts via API, passing along your custom userdata script, wh
 
 ## How does Slicer compare to other tools I already know?
 
-lxd/multipass - this was the first tool I tried to use when testing large scale deployments of Kubernetes. We had already built-up experience with multipass and recommend it for testing OpenFaaS Edge / faasd CE. But it took about 3 minutes to launch each VM, and even longer to delete them. It was so painfully slow, and we'd already built up so much operational knowledge of microVMs through actuated, that we decided to build our own tool.
+lxd/multipass - this was the first tool I tried to use when testing large scale deployments of Kubernetes. We had already built-up experience with multipass and recommend it for testing OpenFaaS Edge / faasd CE. But it took about 3 minutes to launch each VM, and even longer to delete them. It was so painfully slow, and we'd already built up so much operational knowledge of microVMs through [actuated](https://actuated.com), that we decided to build our own tool.
 
 incbus - a fork of lxd with lofty ambitions - a very long setup process, many moving parts, designed to be general purpose which I believe makes it the Kubernetes of VM tools - make of that what you want.
 
@@ -324,4 +324,11 @@ Following on from there, you'll see a documentation site with examples such as:
 * Run OpenFaaS Edge (Sponsors Edition) or faasd CE on a microVM
 
 Plus more examples, and more of you good people try it out and provide feedback.
+
+Whilst you're getting into things, here are a few more videos on Slicer:
+
+* [Cluster Autoscaling with K3s and the Headroom Controller](https://youtu.be/MHXvhKb6PpA)
+* [How we use Slicer to slice up bare-metal for customer support & development](https://youtu.be/XCBJ0XNqpWE)
+* [Mount GPUs into microVMs for LLMs & CI jobs with Slicer](https://youtu.be/YMgrbic-8h4)
+* [Scaling to 15k OpenFaaS Functions with Slicer](https://youtu.be/VhPxqlbwoXE)
 
