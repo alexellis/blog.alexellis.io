@@ -214,6 +214,15 @@ config:
   hypervisor: firecracker
 ```
 
+For a Raspberry Pi 5 with an NVMe drive, or any kind of other Arm64 server, change the image and kernel as follows:
+
+```diff
+-  kernel_image: "ghcr.io/openfaasltd/actuated-kernel:5.10.240-x86_64-latest"
+-  image: "ghcr.io/openfaasltd/slicer-systemd:5.10.240-x86_64-latest"
++  kernel_image: "ghcr.io/openfaasltd/actuated-kernel:6.1.90-aarch64-latest"
++  image: "ghcr.io/openfaasltd/slicer-systemd-arm64:6.1.90-aarch64-latest"
+```
+
 Run the following:
 
 ```bash
