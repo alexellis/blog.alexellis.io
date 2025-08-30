@@ -351,4 +351,5 @@ Whilst you're getting into things, here are a few more videos on Slicer:
 * [How we use Slicer to slice up bare-metal for customer support & development](https://youtu.be/XCBJ0XNqpWE)
 * [Mount GPUs into microVMs for LLMs & CI jobs with Slicer](https://youtu.be/YMgrbic-8h4)
 * [Scaling to 15k OpenFaaS Functions with Slicer](https://youtu.be/VhPxqlbwoXE)
+* [Grab your lab coat - we're building a microVM from a container](https://actuated.com/blog/firecracker-container-lab)
 
