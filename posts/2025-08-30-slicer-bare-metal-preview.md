@@ -72,29 +72,37 @@ This is the pinnacle of cool for me, but it has a real purpose - OpenFaaS custom
 
 ## K3sup Pro if you need K3s
 
-Whilst the CE edition is ideal for experimentation, k3sup pro was built to satisfy long standing requests for an IaaC/GitOps experience.
+Whilst the K3sup CE edition with its `k3sup install/join` commands is ideal for experimentation, K3sup Pro was built to satisfy long standing requests for an IaaC/GitOps experience.
 
-k3sup pro adds a plan and apply command to automate installations both small and large - running in parallel.
+K3sup Pro adds a Terraform-like `plan` and `apply` command to automate installations both small and large - running in parallel.
+
+What's more the plan command accepts the output from Slicer's API, so you can run `slicer up` then `k3sup plan/apply` and you have a kubeconfig for a HA K3s cluster, within a minute or two.
 
 The plan file can be customised and retained in Git for maintenance and updates.
+
+K3sup Pro is a huge time saver, and free for my GitHub Sponsors.
 
 [Learn more about K3sup Pro](https://github.com/alexellis/k3sup?tab=readme-ov-file#k3sup-pro)
 
 ## Quick and dirty installation of Slicer
 
-You'll need to become a GitHub Sponsor at 25 USD / mo or higher for myself, if you already are then guess what? It's effectively free for you.
+You'll need to sponsor me via [GitHub Sponsors](https://github.com/sponsors/alexellis) at 25 USD / mo or higher. If you're already at this level.. then guess what? It's effectively free for you.
 
 Within the sponsorship, you also get free access to K3sup Pro with its plan and apply features that take the output from Slicer and install a multi-master HA K3s cluster all in parallel.
 
 These instructions are quick - and dirty. More will follow, but the technical amongst us will have no issues overlooking this for now.
 
-You will need a system with Linux installed - I recommend Ubuntu 22.04 or 24.04.
+You will need a system with Linux installed - I recommend Ubuntu 22.04 or 24.04. Arch Linux and RHEL-like systems should also work but I can't support you directly. 
 
-First use the [actuated](https://actuated.com) installer to install the pre-requisites:
+The point is that a host running slicer is dedicated to this one task, not a general purpose system with all kinds of other software installed.
+
+First use the [actuated](https://actuated.com) installer to install the pre-requisites. We aren't using actuated here, but they share a lot of DNA.
+
+In time, we'll spin out a separate installer for Slicer.
 
 ```bash
 mkdir -p ~/.actuated
-cat > ~/.actuated/LICENSE
+touch ~/.actuated/LICENSE
 
 (
 # Install arkade
@@ -112,13 +120,13 @@ sudo -E ./install.sh
 )
 ```
 
-Next, get the slicer binary itself:
+Next, get the Slicer binary itself:
 
 ```bash
 sudo -E arkade octi install ghcr.io/openfaasltd/slicer:latest --path /usr/local/bin
 ```
 
-Once you have the slicer binary, activate it with your new or existing [GitHub Sponsorship](https://github.com/sponsors/alexellis).
+Once you have the Slicer binary, activate it with your new or existing [GitHub Sponsorship](https://github.com/sponsors/alexellis).
 
 ```bash
 slicer activate
@@ -128,13 +136,21 @@ slicer activate
 
 This phrase has been attributed to Henry Ford, and it applies to Slicer too.
 
-We use Ubuntu LTS for all of our work, so the root filesystem is Ubuntu based.
+Slicer is made for cloud development, and production workloads. It's Linux only, x86_64 and Arm64.
 
-We also have a Rocky Linux image for those who prefer a RHEL-like experience, or need to work with RHEL/Fedora deployments in production.
+We use Ubuntu LTS for all of our workstation and server deployments at OpenFaaS Ltd, so the root filesystem is Ubuntu based.
+
+There is also a Rocky Linux image for those who prefer a RHEL-like experience, or need to work with RHEL/Fedora deployments for customer support.
 
 ## A quick template for a VM
 
-There are many configuration options and settings, so I'm going to give you the most basic to get started with.
+Slicer uses a YAML file to define a host group, and then a number (`count`) of VMs to create within that group. If you start it up with a count of `0`, then you can use the API or CLI (`slicer vm add`) to create hosts later.
+
+We'll cover customisation a bit later on, but for now, let's get something working - and then you can connect via SSH and customise the VM to your heart's content.
+
+There are various configuration options and settings for storage and networking, so I'm going to give you the most basic to get started with.
+
+We'll start by using a plain disk image, which is slower to create, but is persistent across reboots and doesn't require us to consider a production ready configuration of i.e. ZFS.
 
 Create `vm-image.yaml`:
 
@@ -153,7 +169,7 @@ config:
       gateway: 192.168.137.1/24
 
   github_user: alexellis
-youyou
+
   kernel_image: "ghcr.io/openfaasltd/actuated-kernel:5.10.240-x86_64-latest"
   image: "ghcr.io/openfaasltd/slicer-systemd:5.10.240-x86_64-latest"
 
@@ -228,6 +244,8 @@ Then enable the service and start it.
 
 The preferred way to customise an image is to supply a userdata script. Note this is not cloud-init, but a bash script. Formal cloud-init makes starting microVMs very slow which is a non-goal for us here.
 
+The userdata script will run as root on first boot.
+
 ```diff
 config:
   host_groups:
@@ -280,11 +298,13 @@ You can also create hosts via API, passing along your custom userdata script, wh
 
 ## How does Slicer compare to other tools I already know?
 
+actuated - managed self-hosted runners for GitHub Actions and GitLab CI, where the runners are launched in one-shot microVMs on your own cloud.
+
 lxd/multipass - this was the first tool I tried to use when testing large scale deployments of Kubernetes. We had already built-up experience with multipass and recommend it for testing OpenFaaS Edge / faasd CE. But it took about 3 minutes to launch each VM, and even longer to delete them. It was so painfully slow, and we'd already built up so much operational knowledge of microVMs through [actuated](https://actuated.com), that we decided to build our own tool.
 
-incbus - a fork of lxd with lofty ambitions - a very long setup process, many moving parts, designed to be general purpose which I believe makes it the Kubernetes of VM tools - make of that what you want.
+incbus - a fork of lxd with lofty ambitions - many moving parts need to be understood, configured and decisions made before you can launch a VM. It's designed to be general purpose and even covers its own internal clustering, which in my mind makes it the Kubernetes of VM tools - make of that what you want.
 
-QEMU/libvirt - the syntax for qemu is cryptic at best, and just not built to manage multiple VMs. libvirt is living in the 90s, it requires a lot of boilerplate XML and the networking is too low level for working quickly.
+QEMU/libvirt - the syntax for qemu is cryptic at best, and just not built to manage multiple VMs. libvirt is living in the 90s, it requires a lot of boilerplate XML and the networking is too low level for working quickly. Unlike microVMs, QEMU can run Windows, MacOS, and other OSes.
 
 Proxmox VE - the much beloved tool of the home-lab community, despite being something of a kitchen sink, and rather heavyweight. So if you cut your teeth on "click and point ops" and enjoy something that makes you feel like a VMware admin, then it's probably a good option to consider instead of slicer.
 
