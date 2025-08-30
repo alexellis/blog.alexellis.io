@@ -303,7 +303,7 @@ The Slicer Preview is strictly licensed as a "Home Edition" for use by individua
 Get started:
 
 1. Become a [GitHub sponsor](https://github.com/sponsors/alexellis) at 25 USD / mo or higher, if you are not already.
-2. Find a machine and install Linux onto it, or go to Hetzner Robot (bare metal cloud) and set up a beefy bare-metal host for 30-40 EUR / month. The Intel EX22 is fantastic value.
+2. Find a machine and install Linux onto it, or go to Hetzner Robot (bare metal cloud) and set up a beefy bare-metal host for 30-40 EUR / month. The Intel EX22 is fantastic value. I also talk about the [Intel N100 and other mini PCs in my recent blog post](https://blog.alexellis.io/n100-mini-computer/).
 3. Email me at alex@openfaas.com and I'll send you a Discord invite so we can talk about your use-case, help you get started, and get your feedback.
 
 In the next post we'll look at:
