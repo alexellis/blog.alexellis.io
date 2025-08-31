@@ -341,15 +341,17 @@ You can also create hosts via API, passing along your custom userdata script, wh
 
 ## How does Slicer compare to other tools I already know?
 
-actuated - managed self-hosted runners for GitHub Actions and GitLab CI, where the runners are launched in one-shot microVMs on your own cloud.
-
 lxd/multipass - this was the first tool I tried to use when testing large scale deployments of Kubernetes. We had already built-up experience with multipass and recommend it for testing OpenFaaS Edge / faasd CE. But it took about 3 minutes to launch each VM, and even longer to delete them. It was so painfully slow, and we'd already built up so much operational knowledge of microVMs through [actuated](https://actuated.com), that we decided to build our own tool.
 
 incbus - a fork of lxd with lofty ambitions - many moving parts need to be understood, configured and decisions made before you can launch a VM. It's designed to be general purpose and even covers its own internal clustering, which in my mind makes it the Kubernetes of VM tools - make of that what you want.
 
 QEMU/libvirt - the syntax for qemu is cryptic at best, and just not built to manage multiple VMs. libvirt is living in the 90s, it requires a lot of boilerplate XML and the networking is too low level for working quickly. Unlike microVMs, QEMU can run Windows, MacOS, and other OSes.
 
-Proxmox VE - the much beloved tool of the home-lab community, despite being something of a kitchen sink, and rather heavyweight. So if you cut your teeth on "click and point ops" and enjoy something that makes you feel like a VMware admin, then it's probably a good option to consider instead of slicer.
+Kata Containers - Kata Containers is a project designed to run individual Pods (workloads), not Kubernetes nodes within microVMs.
+
+Proxmox VE - the much beloved tool of the home-lab community, despite being something of a kitchen sink, and rather heavyweight. So if you cut your teeth on "click and point ops" and enjoy something that makes you feel like a VMware admin, then it's probably a good option to consider instead of Slicer.
+
+[actuated](https://actuated.com/) - managed self-hosted runners for GitHub Actions and GitLab CI, where the runners are launched in one-shot microVMs on your own cloud.
 
 Slicer is a modern alternative focused on super fast creation and deletion of microVMs. It comes with SSH preconfigured, and systemd installed, along with just enough Kernel drivers to run containers, Kubernetes, and eBPF. It's fast and lean, and only does just enough for R&D and running production applications.
 
