@@ -96,7 +96,7 @@ OpenFaaS was one of the first projects I built, and it was open-source from the 
 
 In a way this reaction is a good thing - there are so many free tools available for to you. With Slicer Home Edition, we self-select the people who really want to use the software and want to join a community of self-hosters, home-labbers, and cloud native developers.
 
-At some point in the future, we may move Slicer Home Edition to a "Once" model, pay once and use it forever. Something like 395 USD one-off, for lifetime access.
+At some point in the future, we may move Slicer Home Edition to a "Once" model, pay once and use it forever. Something like 295 USD one-off, for lifetime access.
 
 If you're already a sponsor, you get all of the below to play with as much as you like for free. So long as it's not used at or for your work/business/dayjob.
 
