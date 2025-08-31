@@ -349,6 +349,8 @@ QEMU/libvirt - the syntax for qemu is cryptic at best, and just not built to man
 
 Kata Containers - Kata Containers is a project designed to run individual Pods (workloads), not Kubernetes nodes within microVMs.
 
+kubevirt - kubevirt is an attempt to make VMs a workload similar to Pods in Kubernetes. It is naturally slower, more cumbersome and requires a Kubernetes cluster to function. I've often seen it used in homelabs to run Windows.
+
 Proxmox VE - the much beloved tool of the home-lab community, despite being something of a kitchen sink, and rather heavyweight. So if you cut your teeth on "click and point ops" and enjoy something that makes you feel like a VMware admin, then it's probably a good option to consider instead of Slicer.
 
 [actuated](https://actuated.com/) - managed self-hosted runners for GitHub Actions and GitLab CI, where the runners are launched in one-shot microVMs on your own cloud.
