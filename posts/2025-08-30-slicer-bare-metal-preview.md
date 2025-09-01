@@ -56,6 +56,14 @@ Key features that make it ideal for running production workloads:
 * Near-instant destruction of hosts
 * GPU mounting via VFIO for Ollama
 
+## What is a preview?
+
+Slicer is already suitable for productive R&D/support uses and long-running production workloads.
+
+So why is this being called a preview? It's an internal tool, which we have been using since ~ 2022 along with actuated.
+
+The preview is referring to making it consumable and useful as a public offering.
+
 ## Enough talking, I just want to see it running
 
 You can watch a brief demo here:
@@ -379,7 +387,7 @@ In the next post we'll look at:
 * How to use ZFS snapshots and clones for instant boot of new VMs, instead of static disk files
 * How to use the `slicer vm list`, `slicer vm top`, `slicer vm exec` commands
 
-Following on from there, you'll see a documentation site with examples such as:
+We have also launched a [documentation site](https://docs.slicervm.com) with examples such as:
 
 * Launch a large HA K3s cluster
 * Chaos test a Kubernetes operator through its network whilst retaining serial access
@@ -390,7 +398,7 @@ Following on from there, you'll see a documentation site with examples such as:
 * Run Slicer on your Raspberry PI
 * Run OpenFaaS Edge (Sponsors Edition) or faasd CE on a microVM
 
-Plus more examples, and more of you good people try it out and provide feedback.
+Based upon your feedback, we'll add more examples and changes to the CLI, REST API and configuration format.
 
 Whilst you're getting into things, here are a few more videos on Slicer:
 
@@ -399,4 +407,5 @@ Whilst you're getting into things, here are a few more videos on Slicer:
 * [Mount GPUs into microVMs for LLMs & CI jobs with Slicer](https://youtu.be/YMgrbic-8h4)
 * [Scaling to 15k OpenFaaS Functions with Slicer](https://youtu.be/VhPxqlbwoXE)
 * [Grab your lab coat - we're building a microVM from a container](https://actuated.com/blog/firecracker-container-lab)
+
 
