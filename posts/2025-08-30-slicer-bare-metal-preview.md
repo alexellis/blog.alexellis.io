@@ -5,7 +5,6 @@ date: "2025-08-30T08:09:48Z"
 meta_title: "Preview: Slicer Up Bare-Metal with Slicer"
 meta_description: "It's finally here, the initial preview of Slicer - our internal tool for slicing up bare metal into microVMs."
 author: "Alex Ellis"
-draft: true
 tags:
   - "linux"
   - "self-hosting"
@@ -15,6 +14,8 @@ tags:
 ---
 
 By popular request, we're releasing Slicer, our much used internal tool from OpenFaaS Ltd for efficiently slicing up bare metal into microVMs.
+
+> Since this blog post, [Slicer now has an official documentation](https://docs.slicervm.com) site with use-cases and examples.
 
 I was on a call this week with Lingzhi Wang, of [Northwestern University](https://www.northwestern.edu/) in the USA. He told me he was doing a research project on intrusion detection with OpenFaaS, and had access to a powerful machine.
 
@@ -55,6 +56,14 @@ Key features that make it ideal for running production workloads:
 * Multi-host support for even larger slicer deployments
 * Near-instant destruction of hosts
 * GPU mounting via VFIO for Ollama
+
+What about for individuals and hobbyists?
+
+Slicer is probably the easiest, and best supported tool for working with Firecracker and microVMs.
+
+The OS images and Kernels have been specially tuned for container workloads whilst working with various CNCF projects building actuated - our managed GitHub Actions offering. The documentation site gets you from zero to Firecracker Kubernetes cluster within single digit minutes.
+
+So you get to have fun with your lab again, an excuse to buy an N100 or Beelink - a way to to experiment and learn in an isolated environment.
 
 ## What is a preview?
 
