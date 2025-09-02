@@ -127,6 +127,11 @@ Included for 25 USD / mo is:
 * 50% off a 1:1 meeting with me via Zoom for advice & direction in the portal
 * Access to the private Discord server for help and discussion
 
+The first five people to Tweet a screenshot of their machine running Slicer will win a limited edition SlicerVM.com Test Pilot mug. [Shipping restrictions](https://help.printful.com/hc/en-us/articles/360014066779-Are-there-any-shipping-restrictions) may apply.
+
+[![Image of the SlicerVM.com Test Pilot mug](/content/images/2025/09/slicer-mug.png)](public/content/images/2025/09/slicer-mug.png)
+> The limited edition SlicerVM.com Test Pilot mug.
+
 ## Quick and dirty installation of Slicer
 
 You'll need a sponsorship as mentioned above. This is used to activate your Slicer installation.
