@@ -372,6 +372,8 @@ Proxmox VE - the much beloved tool of the home-lab community, despite being some
 
 [actuated](https://actuated.com/) - managed self-hosted runners for GitHub Actions and GitLab CI, where the runners are launched in one-shot microVMs on your own cloud.
 
+### Slicer is to microVMs, what Docker was to Linux namespaces
+
 Slicer is a modern alternative focused on super fast creation and deletion of microVMs. It comes with SSH preconfigured, and systemd installed, along with just enough Kernel drivers to run containers, Kubernetes, and eBPF. It's fast and lean, and only does just enough for R&D and running production applications.
 
 Slicer was written by a developer for making efficient use of large bare-metal hosts, but is equally at home on a Hetzner Robot / Auction instance, splitting up a 16 core / 128GB A102 host into 3-5 dedicated microVMs for various production applications - or a production-ready K3s cluster.
@@ -379,6 +381,12 @@ Slicer was written by a developer for making efficient use of large bare-metal h
 Slicer is a daemon, and can be run with systemd so it's always there when your machine reboots.
 
 Slicer comes with a Serial Over SSH console for easy out of band access. Its API can be used to add and remove hosts dynamically and rapidly for autoscaling.
+
+And unlike the other tools I mentioned, Slicer is equally at home running one-shot tasks like CI jobs, autoscaled Kubernetes nodes, isolated environments for AI agents, and any other kind of serverless task.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5RjtVM4bvp0?si=SbAaWwnvi7jD3pte" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+> Demo of one-shot / API mode
 
 ## Wrapping up
 
