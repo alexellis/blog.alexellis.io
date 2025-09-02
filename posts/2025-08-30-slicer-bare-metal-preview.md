@@ -17,7 +17,7 @@ By popular request, we're releasing Slicer, our much used internal tool from Ope
 
 > Since this blog post, [Slicer now has an official documentation](https://docs.slicervm.com) site with use-cases and examples.
 
-I was on a call this week with Lingzhi Wang, of [Northwestern University](https://www.northwestern.edu/) in the USA. He told me he was doing a research project on intrusion detection with OpenFaaS, and had access to a powerful machine.
+I was on a call this week with Lingzhi Wang, of [Northwestern University](https://www.northwestern.edu/) in the USA. He told me he was doing a research project on intrusion detection with [OpenFaaS](https://openfaas.com), and had access to a powerful machine.
 
 When I asked how powerful the machine was, his reply shocked me:
 
@@ -30,7 +30,7 @@ How many Kubernetes Pods, do you think you can run on that huge machine?
 
 I answered: only 100.
 
-He was installing K3s (Kubernetes) directly onto the host, which when coupled with a 100 Pod limit is a huge waste of resources.
+He was installing [K3s](https://k3s.io) ([Kubernetes](https://kubernetes.io/)) directly onto the host, which when coupled with a 100 Pod limit is a huge waste of resources.
 
 Enter slicer, and the original reason we created it.
 
@@ -41,7 +41,7 @@ The original use-case was for customer support for our line of Kubernetes produc
 * Build a large cluster capable of running thousands of Pods on a single machine - blasting that 100 Pod per node limit
 * Learn how far we can push OpenFaaS before we start to see untolerable latency on `faas-cli list` and `faas-cli deploy`, etc
 * Optimise the cost of long-running burn-in tests and customer simulations
-* Simulate spot-instance behaviour - node addition/removal through Firecracker
+* Simulate spot-instance behaviour - node addition/removal through [Firecracker](https://firecracker-microvm.github.io)
 * Chaos testing - what happens when the network disconnects? This was used to fix a mysterious production issue for a customer where informers were disconnecting after network interruptions
 * Test our code on Arm and x86_64 hosts
 
@@ -59,11 +59,11 @@ Key features that make it ideal for running production workloads:
 
 What about for individuals and hobbyists?
 
-Slicer is probably the easiest, and best supported tool for working with Firecracker and microVMs.
+Slicer is probably the easiest, and best supported tool for working with [Firecracker](https://firecracker-microvm.github.io/) and microVMs.
 
 The OS images and Kernels have been specially tuned for container workloads whilst working with various CNCF projects building actuated - our managed GitHub Actions offering. The documentation site gets you from zero to Firecracker Kubernetes cluster within single digit minutes.
 
-So you get to have fun with your lab again, an excuse to buy an N100 or Beelink - a way to to experiment and learn in an isolated environment.
+So you get to have fun with your lab again, an excuse to buy an [N100](/n100-mini-computer/) or Beelink - a way to to experiment and learn in an isolated environment.
 
 ## What is a preview?
 
@@ -93,7 +93,7 @@ I'll be putting up our fork of the Cluster Autoscaler project on GitHub soon.
 
 ### K3sup Pro if you need K3s
 
-Whilst the K3sup CE edition with its `k3sup install/join` commands is ideal for experimentation, K3sup Pro was built to satisfy long standing requests for an IaaC/GitOps experience.
+Whilst the [K3sup](https://k3sup.dev) CE edition with its `k3sup install/join` commands is ideal for experimentation, K3sup Pro was built to satisfy long standing requests for an IaaC/GitOps experience.
 
 K3sup Pro adds a Terraform-like `plan` and `apply` command to automate installations both small and large - running in parallel.
 
