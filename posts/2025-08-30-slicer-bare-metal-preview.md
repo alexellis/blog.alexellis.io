@@ -129,7 +129,7 @@ Included for 25 USD / mo is:
 
 The first five people to Tweet a screenshot of their machine running Slicer will win a limited edition SlicerVM.com Test Pilot mug. [Shipping restrictions](https://help.printful.com/hc/en-us/articles/360014066779-Are-there-any-shipping-restrictions) may apply.
 
-[![Image of the SlicerVM.com Test Pilot mug](/content/images/2025/09/slicer-mug.png)](public/content/images/2025/09/slicer-mug.png)
+![Image of the SlicerVM.com Test Pilot mug](/content/images/2025/09/slicer-mug.png)
 > The limited edition SlicerVM.com Test Pilot mug.
 
 ## Quick and dirty installation of Slicer
