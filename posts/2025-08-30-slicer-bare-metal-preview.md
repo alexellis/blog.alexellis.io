@@ -28,7 +28,7 @@ My next question surprised him.
 
 How many Kubernetes Pods, do you think you can run on that huge machine?
 
-I answered: only 100.
+I answered: only 100. `[1]`
 
 He was installing [K3s](https://k3s.io) ([Kubernetes](https://kubernetes.io/)) directly onto the host, which when coupled with a 100 Pod limit is a huge waste of resources.
 
@@ -417,4 +417,6 @@ Whilst you're getting into things, here are a few more videos on Slicer:
 * [Scaling to 15k OpenFaaS Functions with Slicer](https://youtu.be/VhPxqlbwoXE)
 * [Grab your lab coat - we're building a microVM from a container](https://actuated.com/blog/firecracker-container-lab)
 
+Footnotes:
 
+* `[1]` Yes, in some Kubernetes distributions you can force the default limit above 100 slightly, but on the machine in question, even doubling that limit would not make effective use of the machine's capabilities. Exercise judgement if/when increasing the limit.
