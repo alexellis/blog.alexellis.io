@@ -3,7 +3,7 @@ title: "Preview: Slice Up Bare-Metal with Slicer"
 slug: "slicer-bare-metal-preview"
 date: "2025-08-30T08:09:48Z"
 meta_title: "Preview: Slicer Up Bare-Metal with Slicer"
-meta_description: "It's finally here, the initial preview of Slicer - our internal tool for slicing up bare metal into microVMs."
+meta_description: "The easiest and best supported way to learn and deploy Firecracker and microVMs."
 author: "Alex Ellis"
 tags:
   - "linux"
