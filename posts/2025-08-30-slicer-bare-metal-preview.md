@@ -171,7 +171,7 @@ sudo -E ./install.sh
 Next, get the Slicer binary itself:
 
 ```bash
-sudo -E arkade octi install ghcr.io/openfaasltd/slicer:latest --path /usr/local/bin
+sudo -E arkade oci install ghcr.io/openfaasltd/slicer:latest --path /usr/local/bin
 ```
 
 Once you have the Slicer binary, activate it with your new or existing [GitHub Sponsorship](https://github.com/sponsors/alexellis).
