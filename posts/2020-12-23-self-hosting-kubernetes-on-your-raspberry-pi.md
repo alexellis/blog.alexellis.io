@@ -30,7 +30,7 @@ The only valid reason here is: because you want to. And if the idea of self-host
 
 > I was speaking to a friend recently that told me they were paying 7USD / mo to host 20 small projects on a well-known PaaS. That would have been costing them around 1700USD per year, moving those workloads to an RPi would save a fortune.
 
-Running a Kubernetes cluster on one of the cheapest providers like [DigitalOcean](https://m.do.co/c/f0d7296632e4) can still set you back 60-120 USD / mo for a modest cluster. You can get much better value with your own hardware, whether that's with an old PC or some Raspberry Pis. I'm not saying that you should call your boss and give him the good news, but there is a certain crowd who enjoy building and running infrastructure, they also tend to enjoy cost savings.
+Running a Kubernetes cluster on one of the cheapest providers like [DigitalOcean](https://m.do.co/c/8d4e75e9886f) can still set you back 60-120 USD / mo for a modest cluster. You can get much better value with your own hardware, whether that's with an old PC or some Raspberry Pis. I'm not saying that you should call your boss and give him the good news, but there is a certain crowd who enjoy building and running infrastructure, they also tend to enjoy cost savings.
 
 **"But, I have no use-case"**
 
@@ -170,7 +170,7 @@ arkade install inlets-operator \
  --license-file ~/LICENSE
 ```
 
-> In the README you'll find out the differences between inlets OSS and PRO, for self-hosting PRO is recommended and more featureful. There are around half a dozen cloud providers available now, added by community members, but I prefer [DigitalOcean](https://m.do.co/c/f0d7296632e4) for the fast boot-time and low cost (around 5 USD / mo).
+> In the README you'll find out the differences between inlets OSS and PRO, for self-hosting PRO is recommended and more featureful. There are around half a dozen cloud providers available now, added by community members, but I prefer [DigitalOcean](https://m.do.co/c/8d4e75e9886f) for the fast boot-time and low cost (around 5 USD / mo).
 
 After running that one command, any LoadBalancer you expose will create a VM on public cloud and deploy an inlets server. The inlets client will then be run within your cluster and you get to self-host whatever you like.
 
