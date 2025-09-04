@@ -15,7 +15,7 @@ tags:
 
 By popular request, we're releasing Slicer, our much used internal tool from OpenFaaS Ltd for efficiently slicing up bare metal into microVMs.
 
-> Since this blog post, [Slicer now has an official documentation](https://docs.slicervm.com) site with use-cases and examples.
+> Since this blog post, there's [official documentation](https://docs.slicervm.com) with use-cases and examples, and a [landing page](https://slicervm.com).
 
 I was on a call this week with Lingzhi Wang, of [Northwestern University](https://www.northwestern.edu/) in the USA. He told me he was doing a research project on intrusion detection with [OpenFaaS](https://openfaas.com), and had access to a powerful machine.
 
