@@ -18,7 +18,7 @@ tags:
 I wrote a replacement for GitHub's code review bot. But it's not as crazy as it sounds, in 2016 I created a successful alternative a de facto industry tool that became one of the most popular self-hosted serverless solutions.
 
 ![Example from a community contribution to arkade](/content/images/2025/11/18/live-review.png)
-> A [live example of the PR review bot](https://github.com/alexellis/arkade/pull/1223#issuecomment-3546559819) in action on my arkade project - a faster alternative to brew for downloading binaries from GitHub releases. Expanding each section gives a detailed breakdown.
+> A [live example of the PR review bot](https://github.com/alexellis/arkade/pull/1221#issuecomment-3546166259) in action on my arkade project - a faster alternative to brew for downloading binaries from GitHub releases. Expanding each section gives a detailed breakdown.
 
 ## Deja vu: OpenFaaS
 
