@@ -190,3 +190,10 @@ Our cautious rollout of the new bot starts off much like OpenFaaS - it scratches
 We don't know where this bot will take us, but if it is able to help us catch some bugs, maintain code quality, and improve our development process, it will pay for itself in short order.
 
 As part of this work, we're going to be releasing a new SDK in Golang for Slicer's REST API, which makes running bots and agents trivial. Launch a microVM in Firecracker, copy in a file, run a command and block until completion, retrieve the result, remove the microVM.
+
+You may also like:
+
+* [Slicer/Firecracker for ephemeral Jenkins slaves](https://actuated.com/blog/bringing-firecracker-to-jenkins)
+* [Slicer docs - examples with K3s, opencode, Pihole, Remote VSCode, etc](https://docs.slicervm.com/)
+* [Preview: Slice Up Bare-Metal with Slicer](/slicer-bare-metal-preview/)
+* [Cloud Native Rejekts - Face off: VMs vs. Containers vs Firecracker](https://www.youtube.com/watch?v=pTQ_jVYhAoc)
