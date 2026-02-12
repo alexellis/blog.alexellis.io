@@ -86,7 +86,7 @@ Unfortunately, there is very little written about it anywhere else on the Intern
 
 A new Kernel must be built with a patched version of the Kernel taken at version 6.7 using [this source tree](https://github.com/virt-pvm/linux). Now if you've ever built a Kernel, you'll know that configurations vary by cloud and underlying hypervisor. You cannot simply run "make all" and deploy the results.
 
-I primarily work with Ubuntu as an Operating System, so I created an EC2 instance, then copied the active Kernel configuration from the /boot partition and copied it into the source directoy as .config.
+I primarily work with Ubuntu as an Operating System, so I created an EC2 instance, then copied the active Kernel configuration from the /boot partition and copied it into the source directory as .config.
 
 Beware, whilst the config I took from a t2.medium worked on other t2 instances, it did not work on an m6a instance, so I had to start over with a new config file taken from a fresh m6a instance. If and when this patch is released and deployed across clouds, building a host kernel will no longer be necessary.
 
@@ -128,7 +128,7 @@ So KVM-PVM means that any AWS customer can now integrate with microVMs whether t
 
 From what I have understood from the links shared, Alibaba Cloud use KVM-PVM for container hosting through Kata containers using Kubernetes. These workloads are likely to be serverless-style HTTP servers which are long lived, and may have adequate performance.
 
-I ran a suite of benchmarks with `dd`, `fio` and `sysbench`, however due to the way Firecracker caches reads and writes, we see widly incorrect numbers even from Firecracker on bare-metal. For this reason I moved to a real world use-case, building a Kernel.
+I ran a suite of benchmarks with `dd`, `fio` and `sysbench`, however due to the way Firecracker caches reads and writes, we see wildy incorrect numbers even from Firecracker on bare-metal. For this reason I moved to a real world use-case, building a Kernel.
 
 In my testing on AWS EC2 instances and on Hetzner Cloud, I noticed additional overheads whilst carrying out CI benchmarking.
 
@@ -173,7 +173,7 @@ The testing showed that whilst KVM-PVM can be used for CI workloads, where secur
 
 Whilst KVM-PVM is being used at scale in production within Alibaba Cloud and Ant Group, it is not merged into the Kernel, which means it requires a large amount of manual work and maintenance.
 
-A host kernel must be built, distributed and replaced on each cloud VM, separate guest kernels need to be maintained along with patched versions of your chosen microVM hypervisor. This may be tennable if you only want to target a single cloud, such as AWS, or if you're working within your own team, but for a vendor that wants to use microVMs in a portable way across clouds, the effort is too much compared to the rewards.
+A host kernel must be built, distributed and replaced on each cloud VM, separate guest kernels need to be maintained along with patched versions of your chosen microVM hypervisor. This may be tenable if you only want to target a single cloud, such as AWS, or if you're working within your own team, but for a vendor that wants to use microVMs in a portable way across clouds, the effort is too much compared to the rewards.
 
 For the time being, Azure, Digital Ocean, Google Cloud, amongst others have nested-virtualisation available. Some of the major clouds like AWS do offer very expensive bare-metal, but with Hetzner's offering being up to 30x cheaper, it's hard to make a business case for using it.
 
