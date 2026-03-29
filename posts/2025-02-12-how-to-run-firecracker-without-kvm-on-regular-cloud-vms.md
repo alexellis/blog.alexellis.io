@@ -27,6 +27,8 @@ The second option was to find a cloud VM where nested virtualisation was enabled
 
 When we built [actuated](https://actuated.com), a solution for managed self-hosted GitHub Actions runners, on your own infrastructure, we started to run into friction. We met users who only had an account with AWS, and would not consider another vendor that provided bare-metal or nested virtualisation on their VMs.
 
+> In Feb 2026, [AWS announced](https://aws.amazon.com/about-aws/whats-new/2026/02/amazon-ec2-nested-virtualization-on-virtual/) very limited availability of nested virtualisation support across C8i, M8i, and R8i instances. Bear in mind, PVM works on any *x86_64* cloud VM, and is [fully automated/packaged up for use in SlicerVM.com](https://docs.slicervm.com/tasks/pvm/).
+
 Why didn't customers consider bare-metal directly from AWS? There are a number of generations of EC2 which offer a bare-metal option, however the cost is around 10x higher than alternatives.
 
 Let's compare two of Hetzner's offerings with one of the smallest bare-metal hosts on AWS, with a comparable Geekbench 6 score.
