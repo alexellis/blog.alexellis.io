@@ -19,6 +19,9 @@ We've all heard people say that local Qwen 27B or 35-A3B is "near-Sonnet/Opus le
 
 I'll cover how the card paid for itself in the first two or three months, how it keeps serving our specific business use case, why I still can't trust it unsupervised, and Qwen's worst trait: the infinite loops and hallucination risk. These show up most when you quantize it down to fit a consumer GPU.
 
+![Figuring out the power connectors for the RTX 6000 Pro](/content/images/2026/06/17/6000.jpg)
+> Figuring out the power connectors for the RTX 6000 Pro
+
 **On my use case for AI**
 
 My journey as a maintainer and founder started with OpenFaaS - built completely by hand, as was all software in 2016 up until recently. That meant laying down the core of the project on my own, then inviting others to participate through community - not because I couldn't do it on my own, but because my goal was to build a successful open source project. Around 2017 I tried to fund my time by joining VMware, and in 2019 after changes in the market, I needed a way to fund the work myself, so moved towards open-core and built a bootstrapped company. Today our small team maintains [OpenFaaS](https://openfaas.com), [SlicerVM](https://slicervm.com) - AI sandboxes and "the missing API for Linux", [Actuated.com](https://actuated.com) - self-hosted CI runners for GitHub/GitLab, and [Inlets.com](https://inlets.dev) - self-hosted HTTP/TCP tunnels.
