@@ -3,7 +3,7 @@ title: "Local Qwen isn't a worse Opus, it's a different tool"
 slug: "local-qwen-isnt-opus"
 date: "2026-06-17"
 meta_title: "Local Qwen isn't a worse Opus, it's a different tool"
-meta_description: "We've all heard people say that Qwen is near-Sonnet level, or near-Opus, but I have receipts and am here to be transparent with you."
+meta_description: "We've all heard people say that Qwen is near-Opus level, but I have receipts and am here to be transparent with you."
 author: "Alex Ellis"
 tags:
  - "llm"
@@ -11,7 +11,7 @@ tags:
  - "agents"
 ---
 
-We've all heard people say that local Qwen 27B or 35-A3B is "near-Sonnet/Opus level", but I have receipts from a software business and open source projects, and am here to be transparent with you.
+We've all heard people say that local Qwen 27B or 35-A3B is "near-Opus level", but I have receipts from a software business and open source projects, and am here to be transparent with you.
 
 > This post is long-form for a reason. It's not a cursory glance, an unsubstantiated claim on X about cancelling Claude Max, or a hobbyist report from a model running at single-digit tokens per second with a 32K context window. It isn't written by a famous CEO tweeting about coding from an airplane.
 > 
