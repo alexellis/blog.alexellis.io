@@ -99,6 +99,8 @@ It's a wonderfully efficient loop for a small team like us that manages multiple
 
 **Sharp lessons from a 3090**
 
+![Sharp lessons from a 3090](/content/images/2026/06/17/3090s.jpg)
+
 I started off with a single 3090 card in 2023, and quickly realised I needed another to be able to load models and have sufficient context. Nothing about local models from 2023 is worth covering here, other than they were so hard to use that I gave up on them. Qwen 3.5 was the first time I saw real work being done by agents.
 
 I could load a model into either card in Q4 quantization with 200k context (also quantized) and get it to do small tasks, when guided. I still remember how quickly that went south. I told the model "Explore this machine from every angle, complete a forensic report on the machine and how it's used" - Claude would have shrugged that off. Qwen started reading every single file on my machine one by one, filled its context, then hallucinated the filenames and even tool calls `~/faas-netes` became `~/faaned`. Stepping back, I was able to get a really lucid report by scoping the task "Take a quick look around this machine, tell me who uses it and what for" and that ran at roughly 40-50 tokens per second (generation).
@@ -108,6 +110,8 @@ A 27B model simply doesn't fit at full fidelity into 1x 3090 card, so the knobs 
 There's a well known rule of thumb that bad things start happening at Q4_0 on the keys part of the KV cache. The most aggressive I've ever been is Q8_0 for keys and Q4_0 for values.
 
 The 3090s were a constant source of headaches - I had to quantize well below where I was comfortable. One of the cards would only show up if I crossed my fingers when turning it on. Even reboots wouldn't cure it - I had to A/C power off and remove the power cable each time for 30 seconds.
+
+> As a quick update: I did find that going back to the last build of the proprietary driver fixed all the issues we had with reliability, and was the only driver that allowed us to disable the GSP firmware which was the source of the issues on one of the cards.
 
 My latest experiment was setting up vLLM (the gold standard for production and concurrent serving) and even with an NVLink (175GBP) and tensor parallelism turned on, it was 3 tokens/second slower than llama.cpp during generation for an equivalent setup. With vLLM, we still saw looping, and loading the weights took a few minutes rather than single-digit seconds.
 
