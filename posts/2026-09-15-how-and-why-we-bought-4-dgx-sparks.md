@@ -2,6 +2,7 @@
 title: "How and Why We Bought 4x DGX Sparks"
 slug: "how-and-why-we-bought-4-dgx-sparks"
 date: "2026-09-15"
+feature_image: "/content/images/2026/09/how-why-dgx-sparks/background.jpg"
 meta_title: "How and Why We Bought 4x DGX Sparks"
 meta_description: "In June we deployed an RTX 6000 Pro into production, a few weeks later, we're now operating DGX Sparks for the team. Learn how and why."
 author: "Alex Ellis"
