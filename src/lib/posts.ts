@@ -19,6 +19,7 @@ export interface PostMeta {
   draft?: boolean;
   featured?: boolean;
   feature_image?: string;
+  og_image?: string;
   tags?: string[];
 }
 

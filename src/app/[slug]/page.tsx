@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props) {
       };
     }
 
-    const imageUrl = getAbsoluteImageUrl(post.feature_image || '');
+    const imageUrl = getAbsoluteImageUrl(post.og_image || post.feature_image || '');
 
     return {
       title: post.title,
