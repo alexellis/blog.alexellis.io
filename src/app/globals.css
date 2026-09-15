@@ -171,7 +171,7 @@ body {
 .ghost-content {
   font-family: "Merriweather", serif;
   font-size: 1.8rem;
-  line-height: 1.75em;
+  line-height: 1.85em;
   color: #3A4145;
   text-rendering: geometricPrecision;
   font-feature-settings: "liga", "onum", "kern";
@@ -238,7 +238,7 @@ body {
 .ghost-content ul, 
 .ghost-content ol, 
 .ghost-content dl {
-  margin: 0 0 1.75em 0;
+  margin: 0 0 2em 0;
   text-rendering: geometricPrecision;
 }
 
@@ -269,7 +269,7 @@ body {
 }
 
 .ghost-content li {
-  margin: 0.4em 0;
+  margin: 0.55em 0;
 }
 
 .ghost-content li li {
@@ -345,6 +345,34 @@ body {
   margin: 0.8em 0 0.8em 1.5em;
   font-size: 0.9em;
   color: #CCC;
+}
+
+/* Glossary / definition tables */
+.ghost-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 0 1.75em 0;
+  font-size: 1.55rem;
+  line-height: 1.5em;
+}
+
+.ghost-content th,
+.ghost-content td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.5em 0.75em;
+  border-bottom: 1px solid #EBF2F6;
+}
+
+.ghost-content th {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #2E2E2E;
+}
+
+.ghost-content td:first-child {
+  font-weight: 700;
+  color: #2E2E2E;
 }
 
 .ghost-content strong {
@@ -588,6 +616,16 @@ body {
   .ghost-content ol, 
   .ghost-content ul {
     padding-left: 2rem;
+  }
+
+  /* Compact glossary tables on mobile */
+  .ghost-content table {
+    font-size: 1.35rem;
+  }
+
+  .ghost-content th,
+  .ghost-content td {
+    padding: 0.4em 0.5em;
   }
   
   /* Adjust author section for mobile */

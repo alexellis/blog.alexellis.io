@@ -194,8 +194,8 @@ export default async function Post({ params }: Props) {
         <main className="content" role="main">
           <article className="post" style={{
             position: 'relative',
-            width: '80%',
-            maxWidth: '710px',
+            width: '84%',
+            maxWidth: '792px',
             margin: '4rem auto',
             paddingBottom: '4rem',
             borderBottom: '#EBF2F6 1px solid',
